@@ -14,7 +14,7 @@ jobs:
      - name: Checkout source code 
        uses: actions/checkout@master
        env:
-         ENVIRONMENT: ${{ inputs.environment }}
+         ENVIRONMENT: Development
    
      - uses: azure/login@v1
        with:
