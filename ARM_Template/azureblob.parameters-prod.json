@@ -6,7 +6,7 @@
             "value": "Standard_ZRS"
         },
         "location": {
-            "value": "West US"
+            "value": "westus"
         }
     }
 }
