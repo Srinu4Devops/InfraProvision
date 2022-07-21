@@ -1,9 +1,14 @@
 name: LA-Build&Deploy-Dev
-on: push
+on: 
+ workflow_dispatch:
+  inputs:
+   environment:
+    description: 'Environment to run tests against'
+    type: environment
+    required: true 
 jobs:
   LA-BiludAndDeploy-Dev:
    runs-on: ubuntu-latest
-   environment: Development
    steps:
      - name: Checkout source code 
        uses: actions/checkout@master
@@ -18,10 +23,11 @@ jobs:
           resourceGroupName: ${{ secrets.AZURE_RG }}
           template: ./ARM_Template/azureblob.json
           parameters: ./ARM_Template/azureblob.parameters-dev.json
+          
   LA-BiludAndDeploy-prod:
+  
     runs-on: ubuntu-latest
     needs: LA-BiludAndDeploy-Dev
-    environment: Production
     steps:
         - uses: azure/login@v1
           with:
